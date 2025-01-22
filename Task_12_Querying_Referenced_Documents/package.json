@@ -1,0 +1,15 @@
+{
+  "name": "querying-referenced-documents",
+  "version": "1.0.0",
+  "main": "retrieve_all.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mongodb": "^6.12.0"
+  }
+}
