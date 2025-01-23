@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const uri = require("./atlas_uri"); // Assuming this is where your MongoDB URI is stored
+const uri = require("./atlas_uri");
 
 const client = new MongoClient(uri);
 const dbname = "Mongo_Assessment";
@@ -61,12 +61,14 @@ const find_email = async (accounts_collection) => {
     const query = {
       email: {
         $regex: "@gmail.com",
-        $options: "i", // Case insensitive search
+        $options: "i", // marked as casing should be insensitive
       },
     };
     const result2 = await accounts_collection.find(query);
     const docs2 = await result2.toArray();
-    docs2.forEach((doc2) => console.log(doc2));
+    console.log("Email with specific email domain");
+    docs2.forEach((doc1) => console.log(doc1));
+    // docs2.forEach((doc2) => console.log(doc2));
   } catch (err) {
     console.error(`Error retrieving users with @gmail.com: ${err}`);
   }
@@ -79,7 +81,7 @@ const main = async () => {
 
     await retrieve_usr(accounts_collection);
     await usr_greater_30(accounts_collection);
-    await find_email(accounts_collection); // Uncommented find_email to test email domain search
+    await find_email(accounts_collection); 
     await sort_usr(accounts_collection);
     
   } catch (err) {

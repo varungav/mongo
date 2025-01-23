@@ -14,7 +14,7 @@ const connectToDatabase = async() => {
         console.log(`Connnected to ${dbname} database...`);
         return accounts_collection;
     } catch(err) {
-        console.lerror(`Error connecting to db: ${err}`);
+        console.error(`Error connecting to db: ${err}`);
         throw err;
     }
 }
@@ -26,7 +26,7 @@ const main = async() => {
         const pipeline = [{
                 $group :{
                     _id : "$name",
-                    Total_Users_ishtu: {$sum : 1}
+                    Tot_number: {$sum : 1}
                 }
             }, {
                 $sort : {_id:1}

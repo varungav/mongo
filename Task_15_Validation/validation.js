@@ -1,4 +1,4 @@
-const {MongoClient} = require("mongodb")
+const {MongoClient, BSONType} = require("mongodb")
 const uri = "mongodb+srv://varungavoor:886611@cluster0.oszqm.mongodb.net/"
 
 const client = new MongoClient(uri)
@@ -24,8 +24,8 @@ const main = async() => {
         const db = client.db(dbname);
         const accounts_collection = db.collection(collection_name);
         const result = await accounts_collection.createIndex(
-            { email: 1 }, // Create index on the 'email' field
-            { unique: true } // Ensure uniqueness
+            { email: 1 }, 
+            { unique: true } 
           );
           console.log(`Unique index created on email: ${result}`);
           await accounts_collection.insertOne({

@@ -25,7 +25,7 @@ const retrievePostsWithCategories = async (db) => {
     const posts = await db.collection(postsCollectionName).aggregate([
       {
         $lookup: {
-          from: categoriesCollectionName, // The 'categories' collection
+          from: categoriesCollectionName,   // The 'categories' collection
           localField: "category_ids",       // Field in the 'posts' collection containing category IDs
           foreignField: "_id",              // Field in the 'categories' collection to match with
           as: "categories"                  // New field to store the matched categories in 'posts'
